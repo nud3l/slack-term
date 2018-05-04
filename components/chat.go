@@ -27,10 +27,7 @@ func (m Message) ToString() string {
 
 		return html.UnescapeString(
 			fmt.Sprintf(
-				"
-				[%s](%s)
-				
-				[[%s]](%s) [<%s>](%s) [%s](%s)",
+				"[%s](%s)\n[[%s]](%s) [<%s>](%s) [%s](%s)",
 				m.Time.Format("2006-01-02"),
 				m.StyleTime,
 				m.Time.Format("15:04"),
