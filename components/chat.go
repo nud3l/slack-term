@@ -23,7 +23,26 @@ type Message struct {
 }
 
 func (m Message) ToString() string {
-	if (m.Time != time.Time{} && m.Name != "") {
+	if (m.Day != time.Day{} && m.Month != time.Month{} && m.Year != time.Year{} && m.Name != "") {
+
+		return html.UnescapeString(
+			fmt.Sprintf(
+				"
+				[%s](%s)
+				
+				[[%s]](%s) [<%s>](%s) [%s](%s)",
+				m.Time.Format("2006-01-02"),
+				m.StyleTime,
+				m.Time.Format("15:04"),
+				m.StyleTime,
+				m.Name,
+				m.StyleName,
+				m.Content,
+				m.StyleText,
+			),
+		)
+
+	} else if (m.Time != time.Time{} && m.Name != "") {
 
 		return html.UnescapeString(
 			fmt.Sprintf(
